@@ -1,0 +1,391 @@
+
+state 0:
+
+	START : . PRINT EXP 
+	START : . EXP 
+	START : . ID EQUAL EXP 
+	START : .  (reduce by rule 3)
+
+	ID	shift 7
+	PRINT	shift 6
+	SEMI	reduce by rule 3
+	EOF	reduce by rule 3
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 1
+	START	goto 22
+
+	.	error
+
+
+state 1:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP . TIMES EXP 
+	EXP : EXP . DIV EXP 
+	EXP : EXP . SUB EXP 
+	START : EXP .  (reduce by rule 1)
+
+	PLUS	shift 11
+	TIMES	shift 10
+	SEMI	reduce by rule 1
+	EOF	reduce by rule 1
+	DIV	shift 9
+	SUB	shift 8
+
+
+	.	error
+
+
+state 2:
+
+	EXP : LPAR . EXP RPAR 
+
+	ID	shift 13
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 12
+
+	.	error
+
+
+state 3:
+
+	EXP : INTEG .  (reduce by rule 4)
+
+	PLUS	reduce by rule 4
+	TIMES	reduce by rule 4
+	SEMI	reduce by rule 4
+	EOF	reduce by rule 4
+	DIV	reduce by rule 4
+	SUB	reduce by rule 4
+	RPAR	reduce by rule 4
+
+
+	.	error
+
+
+state 4:
+
+	EXP : DECIM .  (reduce by rule 6)
+
+	PLUS	reduce by rule 6
+	TIMES	reduce by rule 6
+	SEMI	reduce by rule 6
+	EOF	reduce by rule 6
+	DIV	reduce by rule 6
+	SUB	reduce by rule 6
+	RPAR	reduce by rule 6
+
+
+	.	error
+
+
+state 5:
+
+	EXP : FRACT .  (reduce by rule 7)
+
+	PLUS	reduce by rule 7
+	TIMES	reduce by rule 7
+	SEMI	reduce by rule 7
+	EOF	reduce by rule 7
+	DIV	reduce by rule 7
+	SUB	reduce by rule 7
+	RPAR	reduce by rule 7
+
+
+	.	error
+
+
+state 6:
+
+	START : PRINT . EXP 
+
+	ID	shift 13
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 14
+
+	.	error
+
+
+state 7:
+
+	EXP : ID .  (reduce by rule 5)
+	START : ID . EQUAL EXP 
+
+	PLUS	reduce by rule 5
+	TIMES	reduce by rule 5
+	SEMI	reduce by rule 5
+	EOF	reduce by rule 5
+	DIV	reduce by rule 5
+	SUB	reduce by rule 5
+	EQUAL	shift 15
+
+
+	.	error
+
+
+state 8:
+
+	EXP : EXP SUB . EXP 
+
+	ID	shift 13
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 16
+
+	.	error
+
+
+state 9:
+
+	EXP : EXP DIV . EXP 
+
+	ID	shift 13
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 17
+
+	.	error
+
+
+state 10:
+
+	EXP : EXP TIMES . EXP 
+
+	ID	shift 13
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 18
+
+	.	error
+
+
+state 11:
+
+	EXP : EXP PLUS . EXP 
+
+	ID	shift 13
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 19
+
+	.	error
+
+
+state 12:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP . TIMES EXP 
+	EXP : EXP . DIV EXP 
+	EXP : EXP . SUB EXP 
+	EXP : LPAR EXP . RPAR 
+
+	PLUS	shift 11
+	TIMES	shift 10
+	DIV	shift 9
+	SUB	shift 8
+	RPAR	shift 20
+
+
+	.	error
+
+
+state 13:
+
+	EXP : ID .  (reduce by rule 5)
+
+	PLUS	reduce by rule 5
+	TIMES	reduce by rule 5
+	SEMI	reduce by rule 5
+	EOF	reduce by rule 5
+	DIV	reduce by rule 5
+	SUB	reduce by rule 5
+	RPAR	reduce by rule 5
+
+
+	.	error
+
+
+state 14:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP . TIMES EXP 
+	EXP : EXP . DIV EXP 
+	EXP : EXP . SUB EXP 
+	START : PRINT EXP .  (reduce by rule 0)
+
+	PLUS	shift 11
+	TIMES	shift 10
+	SEMI	reduce by rule 0
+	EOF	reduce by rule 0
+	DIV	shift 9
+	SUB	shift 8
+
+
+	.	error
+
+
+state 15:
+
+	START : ID EQUAL . EXP 
+
+	ID	shift 13
+	FRACT	shift 5
+	DECIM	shift 4
+	INTEG	shift 3
+	LPAR	shift 2
+
+	EXP	goto 21
+
+	.	error
+
+
+state 16:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP . TIMES EXP 
+	EXP : EXP . DIV EXP 
+	EXP : EXP . SUB EXP 
+	EXP : EXP SUB EXP .  (reduce by rule 11)
+
+	PLUS	reduce by rule 11
+	TIMES	shift 10
+	SEMI	reduce by rule 11
+	EOF	reduce by rule 11
+	DIV	shift 9
+	SUB	reduce by rule 11
+	RPAR	reduce by rule 11
+
+
+	.	error
+
+
+state 17:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP . TIMES EXP 
+	EXP : EXP . DIV EXP 
+	EXP : EXP DIV EXP .  (reduce by rule 10)
+	EXP : EXP . SUB EXP 
+
+	PLUS	reduce by rule 10
+	TIMES	reduce by rule 10
+	SEMI	reduce by rule 10
+	EOF	reduce by rule 10
+	DIV	reduce by rule 10
+	SUB	reduce by rule 10
+	RPAR	reduce by rule 10
+
+
+	.	error
+
+
+state 18:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP . TIMES EXP 
+	EXP : EXP TIMES EXP .  (reduce by rule 9)
+	EXP : EXP . DIV EXP 
+	EXP : EXP . SUB EXP 
+
+	PLUS	reduce by rule 9
+	TIMES	reduce by rule 9
+	SEMI	reduce by rule 9
+	EOF	reduce by rule 9
+	DIV	reduce by rule 9
+	SUB	reduce by rule 9
+	RPAR	reduce by rule 9
+
+
+	.	error
+
+
+state 19:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP PLUS EXP .  (reduce by rule 8)
+	EXP : EXP . TIMES EXP 
+	EXP : EXP . DIV EXP 
+	EXP : EXP . SUB EXP 
+
+	PLUS	reduce by rule 8
+	TIMES	shift 10
+	SEMI	reduce by rule 8
+	EOF	reduce by rule 8
+	DIV	shift 9
+	SUB	reduce by rule 8
+	RPAR	reduce by rule 8
+
+
+	.	error
+
+
+state 20:
+
+	EXP : LPAR EXP RPAR .  (reduce by rule 12)
+
+	PLUS	reduce by rule 12
+	TIMES	reduce by rule 12
+	SEMI	reduce by rule 12
+	EOF	reduce by rule 12
+	DIV	reduce by rule 12
+	SUB	reduce by rule 12
+	RPAR	reduce by rule 12
+
+
+	.	error
+
+
+state 21:
+
+	EXP : EXP . PLUS EXP 
+	EXP : EXP . TIMES EXP 
+	EXP : EXP . DIV EXP 
+	EXP : EXP . SUB EXP 
+	START : ID EQUAL EXP .  (reduce by rule 2)
+
+	PLUS	shift 11
+	TIMES	shift 10
+	SEMI	reduce by rule 2
+	EOF	reduce by rule 2
+	DIV	shift 9
+	SUB	shift 8
+
+
+	.	error
+
+
+state 22:
+
+
+	SEMI	accept
+	EOF	accept
+
+
+	.	error
+
+108 of 161 action table entries left after compaction
+9 goto table entries

@@ -1,0 +1,48 @@
+get_remain(X,[X|T],T).
+get_remain(X,[_|T],L):-get_remain(X,T,L).
+
+nc2(L, [X,Y],Z) :-
+    member(X, L),
+    get_remain(X, L, L1),
+    select(X,L,A),
+    member(Y, L1),select(Y,A,Z).
+
+in_list(X, [X|_]):-!.
+in_list(X, [_|T]) :- in_list(X, T).
+
+sub_list([],_).
+sub_list([H|T],L):-in_list(H,L),sub_list(T,L).
+
+paddle(['Alice','Carol'],'Carol').
+paddle(['Carol','Alice'],'Carol').
+paddle(['Alice','Davis'],'Davis').
+paddle(['Davis','Alice'],'Davis').
+paddle(['Bob','Carol'],'Bob').
+paddle(['Carol','Bob'],'Bob').
+paddle(['Bob','Carol'],'Carol').
+paddle(['Carol','Bob'],'Carol').
+paddle(['Bob','Davis'],'Davis').
+paddle(['Davis','Bob'],'Davis').
+paddle(['Carol','Davis'],'Carol').
+paddle(['Davis','Carol'],'Carol').
+paddle(['Carol','Davis'],'Davis').
+paddle(['Davis','Carol'],'Davis').
+
+abcd:-  L=['Alice','Bob','Carol','Davis'],
+        nc2(L,A,B),paddle(A,X),
+        select(Ain,A,[Areach]),
+        nc2([Ain|B],E,[Fin]),paddle(E,Y),
+        select(Ein,[Areach|E],_),paddle([Ein,Fin],Z),
+        sub_list(L,[X,Ain,Y,Ein,Z]),
+        write('Left to Right Crossing-1'),nl,write(A),nl,
+        write('Paddler:-'),write(X),nl,
+        write('Right to Left Crossing-1'),nl,
+        write(Ain),nl,
+        write('Left to Right Crossing-2'),nl,
+        write(E),nl,
+        write('Paddler:-'),write(Y),nl,
+        write('Right to Left Crossing-2'),nl,
+        write(Ein),nl,
+        write('Left to Right Crossing-3'),nl,
+        write([Ein,Fin]),nl,
+        write('Paddler:-'),write(Z).

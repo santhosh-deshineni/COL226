@@ -1,0 +1,1557 @@
+
+state 0:
+
+	START : . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 1
+	START	goto 63
+
+	.	error
+
+
+state 1:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+	START : Expression .  (reduce by rule 0)
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+	LESSOREQ	shift 18
+	GREATOREQ	shift 17
+	LESS	shift 16
+	GREAT	shift 15
+	EQUAL	shift 14
+	NOTEQUAL	shift 13
+
+
+	.	reduce by rule 0
+
+
+state 2:
+
+	Expression : LPAR . Expression RPAR 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 30
+
+	.	error
+
+
+state 3:
+
+	Expression : DECIM .  (reduce by rule 1)
+
+
+
+	.	reduce by rule 1
+
+
+state 4:
+
+	Expression : INTEG .  (reduce by rule 2)
+
+
+
+	.	reduce by rule 2
+
+
+state 5:
+
+	Expression : BOOLNEG . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 31
+
+	.	error
+
+
+state 6:
+
+	Expression : NEG . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 32
+
+	.	error
+
+
+state 7:
+
+	Expression : INV . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 33
+
+	.	error
+
+
+state 8:
+
+	Expression : RAT . LPAR Expression RPAR 
+
+	LPAR	shift 34
+
+
+	.	error
+
+
+state 9:
+
+	Expression : FROMDEC . LPAR Expression RPAR 
+
+	LPAR	shift 35
+
+
+	.	error
+
+
+state 10:
+
+	Expression : MAKERAT . LPAR Expression COMMA Expression RPAR 
+
+	LPAR	shift 36
+
+
+	.	error
+
+
+state 11:
+
+	Expression : FALSE .  (reduce by rule 4)
+
+
+
+	.	reduce by rule 4
+
+
+state 12:
+
+	Expression : TRUE .  (reduce by rule 3)
+
+
+
+	.	reduce by rule 3
+
+
+state 13:
+
+	Expression : Expression NOTEQUAL . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 37
+
+	.	error
+
+
+state 14:
+
+	Expression : Expression EQUAL . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 38
+
+	.	error
+
+
+state 15:
+
+	Expression : Expression GREAT . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 39
+
+	.	error
+
+
+state 16:
+
+	Expression : Expression LESS . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 40
+
+	.	error
+
+
+state 17:
+
+	Expression : Expression GREATOREQ . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 41
+
+	.	error
+
+
+state 18:
+
+	Expression : Expression LESSOREQ . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 42
+
+	.	error
+
+
+state 19:
+
+	Expression : Expression OR . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 43
+
+	.	error
+
+
+state 20:
+
+	Expression : Expression AND . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 44
+
+	.	error
+
+
+state 21:
+
+	Expression : Expression MOD . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 45
+
+	.	error
+
+
+state 22:
+
+	Expression : Expression DIV . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 46
+
+	.	error
+
+
+state 23:
+
+	Expression : Expression TIMES . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 47
+
+	.	error
+
+
+state 24:
+
+	Expression : Expression SUB . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 48
+
+	.	error
+
+
+state 25:
+
+	Expression : Expression PLUS . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 49
+
+	.	error
+
+
+state 26:
+
+	Expression : Expression RDIV . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 50
+
+	.	error
+
+
+state 27:
+
+	Expression : Expression RTIMES . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 51
+
+	.	error
+
+
+state 28:
+
+	Expression : Expression RSUB . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 52
+
+	.	error
+
+
+state 29:
+
+	Expression : Expression RPLUS . Expression 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 53
+
+	.	error
+
+
+state 30:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : LPAR Expression . RPAR 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+	LESSOREQ	shift 18
+	GREATOREQ	shift 17
+	LESS	shift 16
+	GREAT	shift 15
+	EQUAL	shift 14
+	NOTEQUAL	shift 13
+	RPAR	shift 54
+
+
+	.	error
+
+
+state 31:
+
+	Expression : BOOLNEG Expression .  (reduce by rule 10)
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+
+
+	.	reduce by rule 10
+
+
+state 32:
+
+	Expression : NEG Expression .  (reduce by rule 9)
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+
+
+	.	reduce by rule 9
+
+
+state 33:
+
+	Expression : INV Expression .  (reduce by rule 8)
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+
+
+	.	reduce by rule 8
+
+
+state 34:
+
+	Expression : RAT LPAR . Expression RPAR 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 55
+
+	.	error
+
+
+state 35:
+
+	Expression : FROMDEC LPAR . Expression RPAR 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 56
+
+	.	error
+
+
+state 36:
+
+	Expression : MAKERAT LPAR . Expression COMMA Expression RPAR 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 57
+
+	.	error
+
+
+state 37:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+	Expression : Expression NOTEQUAL Expression .  (reduce by rule 28)
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+
+
+	.	reduce by rule 28
+
+
+state 38:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression EQUAL Expression .  (reduce by rule 27)
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+
+
+	.	reduce by rule 27
+
+
+state 39:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression GREAT Expression .  (reduce by rule 23)
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+
+
+	.	reduce by rule 23
+
+
+state 40:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression LESS Expression .  (reduce by rule 25)
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+
+
+	.	reduce by rule 25
+
+
+state 41:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression GREATOREQ Expression .  (reduce by rule 24)
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+
+
+	.	reduce by rule 24
+
+
+state 42:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression LESSOREQ Expression .  (reduce by rule 26)
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+
+
+	.	reduce by rule 26
+
+
+state 43:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression OR Expression .  (reduce by rule 21)
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 21
+
+
+state 44:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression AND Expression .  (reduce by rule 20)
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 20
+
+
+state 45:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression MOD Expression .  (reduce by rule 19)
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+
+
+	.	reduce by rule 19
+
+
+state 46:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression DIV Expression .  (reduce by rule 18)
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+
+
+	.	reduce by rule 18
+
+
+state 47:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression TIMES Expression .  (reduce by rule 17)
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+
+
+	.	reduce by rule 17
+
+
+state 48:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression SUB Expression .  (reduce by rule 16)
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 16
+
+
+state 49:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression PLUS Expression .  (reduce by rule 15)
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 15
+
+
+state 50:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression RDIV Expression .  (reduce by rule 14)
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 14
+
+
+state 51:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression RTIMES Expression .  (reduce by rule 13)
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 13
+
+
+state 52:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression RSUB Expression .  (reduce by rule 12)
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 12
+
+
+state 53:
+
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression RPLUS Expression .  (reduce by rule 11)
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+
+
+	.	reduce by rule 11
+
+
+state 54:
+
+	Expression : LPAR Expression RPAR .  (reduce by rule 22)
+
+
+
+	.	reduce by rule 22
+
+
+state 55:
+
+	Expression : RAT LPAR Expression . RPAR 
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+	LESSOREQ	shift 18
+	GREATOREQ	shift 17
+	LESS	shift 16
+	GREAT	shift 15
+	EQUAL	shift 14
+	NOTEQUAL	shift 13
+	RPAR	shift 58
+
+
+	.	error
+
+
+state 56:
+
+	Expression : FROMDEC LPAR Expression . RPAR 
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+	LESSOREQ	shift 18
+	GREATOREQ	shift 17
+	LESS	shift 16
+	GREAT	shift 15
+	EQUAL	shift 14
+	NOTEQUAL	shift 13
+	RPAR	shift 59
+
+
+	.	error
+
+
+state 57:
+
+	Expression : MAKERAT LPAR Expression . COMMA Expression RPAR 
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+	LESSOREQ	shift 18
+	GREATOREQ	shift 17
+	LESS	shift 16
+	GREAT	shift 15
+	EQUAL	shift 14
+	NOTEQUAL	shift 13
+	COMMA	shift 60
+
+
+	.	error
+
+
+state 58:
+
+	Expression : RAT LPAR Expression RPAR .  (reduce by rule 6)
+
+
+
+	.	reduce by rule 6
+
+
+state 59:
+
+	Expression : FROMDEC LPAR Expression RPAR .  (reduce by rule 7)
+
+
+
+	.	reduce by rule 7
+
+
+state 60:
+
+	Expression : MAKERAT LPAR Expression COMMA . Expression RPAR 
+
+	TRUE	shift 12
+	FALSE	shift 11
+	MAKERAT	shift 10
+	FROMDEC	shift 9
+	RAT	shift 8
+	INV	shift 7
+	NEG	shift 6
+	BOOLNEG	shift 5
+	INTEG	shift 4
+	DECIM	shift 3
+	LPAR	shift 2
+
+	Expression	goto 61
+
+	.	error
+
+
+state 61:
+
+	Expression : MAKERAT LPAR Expression COMMA Expression . RPAR 
+	Expression : Expression . RPLUS Expression 
+	Expression : Expression . RSUB Expression 
+	Expression : Expression . RTIMES Expression 
+	Expression : Expression . RDIV Expression 
+	Expression : Expression . PLUS Expression 
+	Expression : Expression . SUB Expression 
+	Expression : Expression . TIMES Expression 
+	Expression : Expression . DIV Expression 
+	Expression : Expression . MOD Expression 
+	Expression : Expression . AND Expression 
+	Expression : Expression . OR Expression 
+	Expression : Expression . GREAT Expression 
+	Expression : Expression . GREATOREQ Expression 
+	Expression : Expression . LESS Expression 
+	Expression : Expression . LESSOREQ Expression 
+	Expression : Expression . EQUAL Expression 
+	Expression : Expression . NOTEQUAL Expression 
+
+	RPLUS	shift 29
+	RSUB	shift 28
+	RTIMES	shift 27
+	RDIV	shift 26
+	PLUS	shift 25
+	SUB	shift 24
+	TIMES	shift 23
+	DIV	shift 22
+	MOD	shift 21
+	AND	shift 20
+	OR	shift 19
+	LESSOREQ	shift 18
+	GREATOREQ	shift 17
+	LESS	shift 16
+	GREAT	shift 15
+	EQUAL	shift 14
+	NOTEQUAL	shift 13
+	RPAR	shift 62
+
+
+	.	error
+
+
+state 62:
+
+	Expression : MAKERAT LPAR Expression COMMA Expression RPAR .  (reduce by rule 5)
+
+
+
+	.	reduce by rule 5
+
+
+state 63:
+
+
+	EOF	accept
+
+
+	.	error
+
+236 of 575 action table entries left after compaction
+27 goto table entries

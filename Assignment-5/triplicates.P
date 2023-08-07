@@ -1,0 +1,9 @@
+not_in_list(_,[]).
+not_in_list(A,[H|T]):-A\=H,not_in_list(A,T).
+
+one_or_less(_,[]).
+one_or_less(A,[A|T]):-not_in_list(A,T).
+one_or_less(A,[H|T]):-A\=H,one_or_less(A,T).
+
+has_no_triplicates([]).
+has_no_triplicates([H|T]):- one_or_less(H,T),has_no_triplicates(T).

@@ -1,0 +1,15 @@
+# Thoughts
+
+1. If single line break then check if it has a number then go to next point otherwise continue in same point with space
+
+2. If double line break then if there is a single indented hyphen or number create list inside this li
+
+3. If double line break then number or hyphen without indent then put p tag on current point and change point
+
+4. If double line break then double indent then put in p tag and put current line in pre and code
+
+5. If double line break then no indent and not hyphen or number then finish list
+
+6. fix the \\ before final submission
+
+7. Implement hr, block quotes, links and tables and error checking

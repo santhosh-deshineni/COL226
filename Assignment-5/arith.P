@@ -1,0 +1,21 @@
+signed_digit(A, +A).
+signed_digit(A, -A).
+
+signed_list([],[]).
+signed_list([H|T],[X|Z]):-signed_digit(H,X),
+                          signed_list(T,Z).
+
+printlist([]).
+printlist([H|T]):-write(H),printlist(T).
+
+eval_equal(A,B):-signed_list(A,X),
+                 signed_list(B,Y),
+                 sum_list(X,Ans),
+                 sum_list(Y,Ans),
+                 printlist(X),write(' '),write(=),write(' '),printlist(Y).
+
+parts_of_list(B,C,A):-dif(B,[]),dif(C,[]),
+                      append(B,C,A).
+
+arith(L):-parts_of_list(X,Y,L),
+          eval_equal(X,Y).

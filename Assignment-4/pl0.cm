@@ -1,0 +1,16 @@
+Library
+    structure PL0
+is
+    errcheck.lex.sml
+    rational.sml
+    AST.sml
+    pl0.lex
+    pl0.yacc:MLYacc
+    string.lex
+    string.yacc:MLYacc
+    create.sml
+    pl0.sml
+    $/basis.cm
+    $/ml-yacc-lib.cm
+    $smlnj/compiler/compiler.cm
+    $/smlnj-lib.cm

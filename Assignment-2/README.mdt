@@ -1,0 +1,31 @@
+# COL226 Assignment 2
+
+#### Santhosh Rishi Deshineni (2021CS10564)
+
+### Implemented Markdown Features
+
+1. **Headings**: The number of hashtags are found to calculate h0-h6.
+
+2. **Text Format**: Bold, Italic and underlining has been implemented.
+
+3. **Lists**: Lists both ordered and unordered has been implemented to arbitrary level of nesting.
+
+4. **Tables**: Centre aligned tables have been implemented using the given format.
+
+5. **Code Block**: The code blocks occur when the number of whitespaces exceeds current indentation by more than 4.
+
+6. **hr**: horizontal line is created when 3 or more hyphens occur on a line.
+
+7. **Links**: Links in the \[\]\(\) format as well as \<\> format have been implemented.
+
+### Design Decisions
+1. Headings may or may not have a space after the hashtags are over. The implementation works for both.
+
+2. The italic and bold tags as well as underlining is implemented assuming that the ending tags are present in the input.
+
+3. The lists can go to any level of nesting given that each level follows the indentation properly. However, lazy typing is allowed
+if there is only a single line break. Also, list items start with a p tag.
+
+4. The tables in the markdown should always start on a new line.
+
+5. The hyphens for an hr tag should be on a new line.

@@ -1,0 +1,25 @@
+val lexer =
+let 
+  fun input f =
+      case TextIO.inputLine f of
+        SOME s => s
+      | NONE => raise Fail "Implement proper error handling."
+in 
+  CalcLex.makeLexer (fn (n:int) => input TextIO.stdIn)
+end
+
+val lexer = CalcLex.makeLexer(fn n => valOf(TextIO.inputLine TextIO.stdIn));
+
+fun makeCounter() =
+  let
+    val countRef = ref 0
+    fun counter(n: int) =
+      if !countRef = 0 then
+        (countRef := 1; valOf(TextIO.inputLine TextIO.stdIn))
+      else
+        ""
+  in
+    counter
+  end;
+val func = makeCounter();
+val lexer = CalcLex.makeLexer(func);
